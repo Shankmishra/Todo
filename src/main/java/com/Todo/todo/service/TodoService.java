@@ -30,9 +30,12 @@ public class TodoService {
         trepo.deleteById(noteId);
 
     }
-//    public void editNotes(){
-//
-//    }
+    public void editnote(String id,TodoRequest todoRequest){
+        Note note = trepo.findById(id)
+                .orElseThrow(()->new RuntimeException("Note not found"));
+        note.setNotesContent(todoRequest.getNotesContent());
+        trepo.save(note);
+    }
 
     private TodoRequest mapToNoteResponse(Note note) {
         return TodoRequest.builder()

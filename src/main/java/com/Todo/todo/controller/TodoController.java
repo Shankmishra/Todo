@@ -35,4 +35,10 @@ public class TodoController {
       todoService.deletenote(id);
     }
 
+    @PutMapping("/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public void deleteNote(@PathVariable String id,@RequestBody TodoRequest todoRequest){
+        todoService.editnote(id,todoRequest);
+    }
+
 }
